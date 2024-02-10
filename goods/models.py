@@ -1,6 +1,3 @@
-import decimal
-from email.policy import default
-from tabnanny import verbose
 from django.db import models
 
 
@@ -56,7 +53,7 @@ class Products(models.Model):
     def display_id(self):
         return f"{self.id: 06}"
 
-    # Метод проверяет есть ли скидка, и возвращает цену минус скидка, или цену, 
+    # Метод проверяет есть ли скидка, и возвращает цену минус скидка, или цену,
     # округляем до 2 знака после запятой
     def self_price(self):
         if self.discount:
