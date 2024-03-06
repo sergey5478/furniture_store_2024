@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Categories(models.Model):
@@ -48,7 +49,10 @@ class Products(models.Model):
     # Меняет название на нормальное + добавляет количество
     def __str__(self):
         return f"{self.name} Количество - {self.quantity}"
-
+    
+    def get_absolute_url(self):
+        return reverse("catalog:product", kwargs={"product_slug": self.slug})
+    
     # Вызывает id, плюс, через 06, добавляет нолики перед числом, получаем например 00001
     def display_id(self):
         return f"{self.id:06}"
